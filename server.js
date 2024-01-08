@@ -107,6 +107,16 @@ app.get('/customerBookingHistory/:customerName', (req, res) => {
   res.json(customerBookingHistory);
 });
 
+// Endpoint for the root URL
+app.get('/', (req, res) => {
+  res.send('Welcome to the room booking system!');
+});
+
+// Handling "Cannot GET /" error
+app.use((req, res) => {
+  res.status(404).send('Endpoint not found');
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
